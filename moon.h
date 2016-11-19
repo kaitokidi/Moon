@@ -20,6 +20,15 @@ public:
     TextBox textBox;
 private:
 
+    sf::Vector2f speed;
+
+    sf::Sprite glowing;
+    sf::Texture texture;
+
+    sf::Sprite smoon;
+    sf::Texture tmoon;
+
+    float m_timer;
 };
 
 #endif

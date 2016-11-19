@@ -43,7 +43,7 @@ int main(){
 
     sf::CircleShape guia;
     guia.setRadius(10);
-    guia.setFillColor(sf::Color::White);
+    guia.setFillColor(sf::Color(200,200,200,50));
     guia.setOrigin(guia.getLocalBounds().width/2, guia.getLocalBounds().height/2);
 
     float deltatime = 0.0;
@@ -58,8 +58,8 @@ int main(){
     std::vector< std::vector <std::pair <float, std::string > > > groups =
     {
         {
-            std::pair <float, std::string >(0, "Hi mates!"),
-            std::pair <float, std::string >(5, "Hi brother!")
+            std::pair <float, std::string >(0, "Hi friend!"),
+            std::pair <float, std::string >(5, "I've missed you so much!")
         }
         ,
         {
@@ -84,14 +84,14 @@ int main(){
     };
 
 
-    moonSentences.push_back("stufstufstuf");
-    moonSentences.push_back("stufstufstuf2");
+    moonSentences.push_back("I'm so alone in this universe, it hurts...");
+    moonSentences.push_back("I wish someone missed me, or even considered me a friend...");
     moonSentences.push_back("stufstufstuf3");
     moonSentences.push_back("stufstufstuf4");
     moonSentences.push_back("stufstufstuf5");
 
     Moon moon("The life of the moon is so lonely", font);
-    moon.setOrigin(moon.getGlobalBounds().width/2, moon.getGlobalBounds().height/2);
+    moon.setOrigin(moon.getLocalBounds().width/2, moon.getLocalBounds().height/2);
 
     std::vector < Star > stars;
 
@@ -158,8 +158,8 @@ sf::Vector2f groupPosition;
                 if( rand()%2 == 0) sign4 = 1;
 
                 int w_size = static_cast<int>(window.getSize().y);
-                groupPosition = moon.getPosition()+sf::Vector2f((w_size + rand()%w_size) * sign1,
-                                                                (w_size + rand()%w_size) * sign2);
+                groupPosition = moon.getPosition()+sf::Vector2f((w_size/5 + rand()%w_size) * sign1,
+                                                                (w_size/5 + rand()%w_size) * sign2);
 
 
                 for(auto pair: group){
@@ -173,10 +173,10 @@ sf::Vector2f groupPosition;
             break;
         case State::Searching:
         {
-            std::cout << "seraching the meaning of life" << moon.getPosition().x << "," <<moon.getPosition().y << std::endl;
+            ////std::cout << "seraching the meaning of life" << moon.getPosition().x << "," <<moon.getPosition().y << std::endl;
             bool goToNextState = true;
             for(Star &s : stars){
-                std::cout << "star -> " << s.getPosition().x << ";" << s.getPosition().y << std::endl;
+               //// std::cout << "star -> " << s.getPosition().x << ";" << s.getPosition().y << std::endl;
                 if(distance(moon.getPosition(), s.getPosition()) > window.getSize().y/2) goToNextState = false;
             }
             if(goToNextState){
@@ -230,14 +230,15 @@ sf::Vector2f groupPosition;
             float angle = getAngle(moon.getPosition(), stars[0].getPosition());
             std::cout << "the angle is "<< angle << std::endl;
             sf::Vector2f guiaPos;
-            guiaPos.x = moon.getPosition().x + std::cos(angle*M_PI/180) * (moon.getRadius() + guia.getRadius() + 10);
-            guiaPos.y = moon.getPosition().y + std::sin(angle*M_PI/180) * (moon.getRadius() + guia.getRadius() + 10);
+            guiaPos.x = moon.getPosition().x + std::cos(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
+            guiaPos.y = moon.getPosition().y + std::sin(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
             guia.setPosition(guiaPos);
             window.draw(guia);
         }
 
         for(Star &s : stars){
             s.render(window);
+            //window.draw(s);
         }
         moon.render(window);
         window.display();

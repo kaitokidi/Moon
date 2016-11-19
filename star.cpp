@@ -32,6 +32,7 @@ void Star::update(float dt) {
 }
 
 void Star::render(sf::RenderTarget &target){
+    setTexture(texture);
     target.draw(*this);
     textBox.setPosition(sf::Vector2f(getPosition().x - textBox.getGlobalBounds().width/2, getPosition().y -80));
     target.draw(textBox);
