@@ -1,0 +1,20 @@
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/FindTheSpy.ap_ \
+ : /home/kaito/Escriptori/GitProjects/findSpy/moon/res/drawable-mdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/res/drawable-hdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/res/values/strings.xml \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/res/drawable-xxhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/res/drawable-xhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/res/drawable-ldpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/res/drawable-mdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/res/drawable-hdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/res/drawable-xxhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/res/drawable-xhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/res/drawable-ldpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/font.otf \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/sglow.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/glow.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/moon.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/music.ogg \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/assets/res/star.png \
+/home/kaito/Escriptori/GitProjects/findSpy/moon/bin/AndroidManifest.xml \
