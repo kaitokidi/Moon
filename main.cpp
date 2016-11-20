@@ -19,7 +19,7 @@ float getAngle(sf::Vector2f &orig, sf::Vector2i &des) {
 
 namespace State{
 enum state {
-  Idle, Speaking, Searching, GroupChat
+  Idle, Speaking, Searching, GroupChat, fadeOut
 };
 }
 
@@ -73,22 +73,27 @@ int main(){
         {
             std::pair <float, std::string >(0, "You are everything to me!"),
             std::pair <float, std::string >(6, "You are awesome!"),
-            std::pair <float, std::string >(5, "Guys are you getting sentimental?")
+            std::pair <float, std::string >(10, "Guys are you getting sentimental?")
         }
         ,
         {
             std::pair <float, std::string >(0, "Loneliness is hard to accept!"),
             std::pair <float, std::string >(6, "Don't worry, we are good now!")
         }
+        ,
+        {}
+        ,
+        {}
     };
 
 
-    moonSentences.push_back("I'm so alone in this universe, it hurts...");
-    moonSentences.push_back("I wish someone missed me, or even considered me a friend...");
+    moonSentences.push_back("I'm so alone in this universe... \n Is hard to live this way...");
+    moonSentences.push_back("I wish someone missed me too...");
     moonSentences.push_back("Has to be so nice to be loved...");
-    moonSentences.push_back("Hope someone would care about me...");
-    moonSentences.push_back("Friendship... It hurts so much");
+    moonSentences.push_back("Hope someone would care about me... \n I'm sure is a warm feeling...");
+    moonSentences.push_back("Friendship... It hurts so much not having it...");
     moonSentences.push_back("Are we? I'm invisible to them...");
+    moonSentences.push_back("But wait...");
     moonSentences.push_back("What if everyone was talking about me this whole time?");
 
     Moon moon("The life of the moon is so lonely", font);
@@ -101,6 +106,8 @@ int main(){
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), L"The Moon", sf::Style::Resize|sf::Style::Close);
 
     window.setFramerateLimit(30);
+
+    float fadeOutValue = 0;
 
 	//GAME LOOP
 	while(window.isOpen()){
@@ -137,7 +144,7 @@ sf::Vector2f groupPosition;
             //std::cout << "idle" << std::endl;
             if(moon.textBox.finished()){
                 //std::cout << "boobs" << std::endl;
-                if(moonSentenceIndex < moonSentences.size()) moon.setSentence(": )");
+                if(moonSentenceIndex >= moonSentences.size()) moon.setSentence(": )");
                 else moon.setSentence(moonSentences[moonSentenceIndex]);
                 ++moonSentenceIndex;
                 currentState = State::Speaking;
@@ -147,29 +154,66 @@ sf::Vector2f groupPosition;
             //std::cout << "speaking" << std::endl;
             if(moon.textBox.finished()){
                 currentState = State::Searching;
-                auto group = groups[groupIndex];
-                ++groupIndex;
 
-                int sign1 = -1;
-                if( rand()%2 == 0) sign1 = 1;
-                int sign2 = -1;
-                if( rand()%2 == 0) sign2 = 1;
-                int sign3 = -1;
-                if( rand()%2 == 0) sign3 = 1;
-                int sign4 = -1;
-                if( rand()%2 == 0) sign4 = 1;
+                if(groupIndex < groups.size()){
+                    auto group = groups[groupIndex];
+                    ++groupIndex;
 
-                int w_size = static_cast<int>(window.getSize().y);
-                groupPosition = moon.getPosition() + sf::Vector2f((w_size/5 + rand()%w_size) * sign1,
-                                                                (w_size/5 + rand()%w_size) * sign2);
+                    int sign1 = -1;
+                    if( rand()%2 == 0) sign1 = 1;
+                    int sign2 = -1;
+                    if( rand()%2 == 0) sign2 = 1;
+                    int sign3 = -1;
+                    if( rand()%2 == 0) sign3 = 1;
+                    int sign4 = -1;
+                    if( rand()%2 == 0) sign4 = 1;
+
+                    int w_size = static_cast<int>(window.getSize().y);
+                    groupPosition = moon.getPosition() + sf::Vector2f((w_size/5 + rand()%w_size) * sign1,
+                                                                    (w_size/5 + rand()%w_size) * sign2);
 
 
-                for(auto pair: group){
-                    stars.push_back(Star(font, pair.first));
-                    stars[stars.size()-1].setPosition(groupPosition+sf::Vector2f((20 + rand()%100) * sign3,
-                                                                                 (20 + rand()%100) * sign4));
-                    stars[stars.size()-1].setSentence(pair.second);
-                    //std::cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << pair.second << std::endl;
+                    for(auto pair: group){
+                        stars.push_back(Star(font, pair.first));
+                        stars[stars.size()-1].setPosition(groupPosition+sf::Vector2f((20 + rand()%150) * sign3,
+                                                                                     (20 + rand()%150) * sign4));
+                        stars[stars.size()-1].setSentence(pair.second);
+                        //std::cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << pair.second << std::endl;
+                    }
+                }
+                else {
+                    int size = 20;
+                    stars.push_back(Star(font, 2));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(0.0,0.0));
+                    stars[stars.size()-1].setSentence(": )");
+
+                    stars.push_back(Star(font, 3));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(1*size,-1.42*size));
+                    stars[stars.size()-1].setSentence("<3");
+
+                    stars.push_back(Star(font, 3));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(-1*size,-1.42*size));
+                    stars[stars.size()-1].setSentence("<3");
+
+                    stars.push_back(Star(font, 4));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(2*size,-2.84*size));
+                    stars[stars.size()-1].setSentence(": )");
+
+                    stars.push_back(Star(font, 4));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(-2*size,-2.84*size));
+                    stars[stars.size()-1].setSentence("<3");
+
+                    stars.push_back(Star(font, 5));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(1.6*size,-3.9*size));
+                    stars[stars.size()-1].setSentence(": )");
+
+                    stars.push_back(Star(font, 3));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(-1.4*size,-3.9*size));
+                    stars[stars.size()-1].setSentence("( :");
+
+                    stars.push_back(Star(font, 6));
+                    stars[stars.size()-1].setPosition(sf::Vector2f(0*size,-3.1*size));
+                    stars[stars.size()-1].setSentence("<3");
                 }
             }
             break;
@@ -191,6 +235,7 @@ sf::Vector2f groupPosition;
             break;
         }
         case State::GroupChat:
+        {
             //std::cout << "groupchating (. Y .)" << std::endl;
             for(Star &s : stars){
                 s.update(deltatime);
@@ -202,10 +247,24 @@ sf::Vector2f groupPosition;
             }
 
             if(finished) {
+                fadeOutValue = 0.0;
+                currentState = State::fadeOut;
+            }
+            break;
+        }
+        case State::fadeOut:
+            if(fadeOutValue <= 1){
+                fadeOutValue += deltatime* 0.5;
+                for(Star &s : stars){
+                    s.setColor(sf::Color(255,255,255, 255-255*fadeOutValue));
+                }
+            }
+            else {
                 stars.clear();
                 currentState = State::Idle;
             }
-
+            break;
+        default:
             break;
         }
 
@@ -230,7 +289,7 @@ sf::Vector2f groupPosition;
 
         if(stars.size() > 0){
             float angle = getAngle(moon.getPosition(), stars[0].getPosition());
-            std::cout << "the angle is "<< angle << std::endl;
+            //std::cout << "the angle is "<< angle << std::endl;
             sf::Vector2f guiaPos;
             guiaPos.x = moon.getPosition().x + std::cos(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
             guiaPos.y = moon.getPosition().y + std::sin(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
@@ -239,11 +298,13 @@ sf::Vector2f groupPosition;
         }
 
         for(Star &s : stars){
+            /*
             float dist = std::abs(distance(moon.getPosition(), s.getPosition()));
             if(dist < 2*moon.getGlobalBounds().width){
                 float factor = dist/2.f*moon.getGlobalBounds().width;
                 s.setColor(sf::Color(255,255,255,int(255*factor)));
             }else s.setColor(sf::Color(255,255,255,255));
+            */
             s.render(window);
             //window.draw(s);
         }
