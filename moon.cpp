@@ -39,16 +39,50 @@ void Moon::setSentence(std::string s)
     textBox.setSentence(s);
 }
 
-void Moon::update(float dt) {
+void Moon::update(float dt, sf::RenderTarget& window) {
     m_timer += dt;
 
+    sf::Vector2f touchPos = getPosition();
+    bool up = false;
+    bool down = false;
+    bool left = false;
+    bool right = false;
+    if (sf::Touch::isDown(0)) {
+               touchPos = sf::Vector2f(sf::Touch::getPosition(0).x,sf::Touch::getPosition(0).y);
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)  || sf::Keyboard::isKeyPressed(sf::Keyboard::A)) 	{
+               if(touchPos.x < window.getSize().x/3){
+                   left = true;
+               }
+               if(touchPos.x > 2*window.getSize().x/3){
+                   right = true;
+               }
+               if(touchPos.y < window.getSize().y/3){
+                   up = true;
+               }
+               if(touchPos.y > 2*window.getSize().y/3){
+                   down = true;
+               }
+/*               if(touchPos.x > getPosition().x+getGlobalBounds().width/2){
+                   if(touchPos.y < getPosition().y+getGlobalBounds().height/2 && touchPos.y > getPosition().y-getGlobalBounds().height/2){
+                        right = true;
+                   }
+               }
+
+               if(touchPos.x < getPosition().x-getGlobalBounds().width/2){
+                   if(touchPos.y < getPosition().y+getGlobalBounds().height/2 && touchPos.y > getPosition().y-getGlobalBounds().height/2){
+                        left = true;
+                   }
+               }
+  */
+
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)  || sf::Keyboard::isKeyPressed(sf::Keyboard::A) || left) 	{
         speed.x += -MOVEMENTSPEED*dt;
 //        move(sf::Vector2f(-MOVEMENTSPEED*dt, 0));
   //      glowing.setOrigin(glowing.getLocalBounds().width/2-MOVEMENTSPEED*dt, glowing.getLocalBounds().height/2);
     }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D))	{
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::D) || right)	{
         speed.x += MOVEMENTSPEED*dt;
         //move(sf::Vector2f( MOVEMENTSPEED*dt, 0));
         //glowing.setOrigin(glowing.getLocalBounds().width/2+MOVEMENTSPEED*dt, glowing.getLocalBounds().height/2);
@@ -59,12 +93,12 @@ void Moon::update(float dt) {
     }
 
 
-    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)    || sf::Keyboard::isKeyPressed(sf::Keyboard::W))	{
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)    || sf::Keyboard::isKeyPressed(sf::Keyboard::W) || up)	{
        speed.y += -MOVEMENTSPEED*dt;
         //move(sf::Vector2f(0, -MOVEMENTSPEED*dt));
         //glowing.setOrigin(glowing.getLocalBounds().width/2, glowing.getLocalBounds().height/2-MOVEMENTSPEED*dt);
     }
-    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)  || sf::Keyboard::isKeyPressed(sf::Keyboard::S))	{
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)  || sf::Keyboard::isKeyPressed(sf::Keyboard::S) || down)	{
         speed.y += MOVEMENTSPEED*dt;
         //move(sf::Vector2f(0,  MOVEMENTSPEED*dt));
         //glowing.setOrigin(glowing.getLocalBounds().width/2, glowing.getLocalBounds().height/2+MOVEMENTSPEED*dt);

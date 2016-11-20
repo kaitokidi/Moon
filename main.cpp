@@ -275,7 +275,7 @@ sf::Vector2f groupPosition;
             break;
         }
 
-        moon.update(deltatime);
+        moon.update(deltatime, window);
 		//Set view values
         sf::Vector2f viewPosition;
         view.reset(sf::FloatRect(moon.getPosition().x, moon.getPosition().y,

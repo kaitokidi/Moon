@@ -13,7 +13,7 @@ public:
     Moon(std::string s, sf::Font& f);
 
     void setSentence(std::string s);
-    void update(float dt);
+    void update(float dt, sf::RenderTarget &window);
 
     void render(sf::RenderTarget &target);
 
