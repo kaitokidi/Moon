@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <cmath>
 #include <stdlib.h>     /* srand, rand */
@@ -108,6 +109,11 @@ int main(){
     window.setFramerateLimit(30);
 
     float fadeOutValue = 0;
+
+    sf::Music m;
+    m.openFromFile("res/music.ogg");
+    m.setLoop(true);
+    m.play();
 
 	//GAME LOOP
 	while(window.isOpen()){
