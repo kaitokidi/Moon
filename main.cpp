@@ -63,32 +63,33 @@ int main(){
         }
         ,
         {
-            std::pair <float, std::string >(0, "Yo man !"),
-            std::pair <float, std::string >(8, "penguins!")
+            std::pair <float, std::string >(0, "Glad you are here!"),
+            std::pair <float, std::string >(6, "I Really love you : )!")
         }
         ,
         {
-            std::pair <float, std::string >(0, "Yo 1 !"),
-            std::pair <float, std::string >(8, "pengu1ins!")
         }
         ,
         {
-            std::pair <float, std::string >(0, "Yo 2 !"),
-            std::pair <float, std::string >(8, "peng2uins!")
+            std::pair <float, std::string >(0, "You are everything to me!"),
+            std::pair <float, std::string >(6, "You are awesome!"),
+            std::pair <float, std::string >(5, "Guys are you getting sentimental?")
         }
         ,
         {
-            std::pair <float, std::string >(0, "Yo 3 !"),
-            std::pair <float, std::string >(8, "pengu3ins!")
+            std::pair <float, std::string >(0, "Loneliness is hard to accept!"),
+            std::pair <float, std::string >(6, "Don't worry, we are good now!")
         }
     };
 
 
     moonSentences.push_back("I'm so alone in this universe, it hurts...");
     moonSentences.push_back("I wish someone missed me, or even considered me a friend...");
-    moonSentences.push_back("stufstufstuf3");
-    moonSentences.push_back("stufstufstuf4");
-    moonSentences.push_back("stufstufstuf5");
+    moonSentences.push_back("Has to be so nice to be loved...");
+    moonSentences.push_back("Hope someone would care about me...");
+    moonSentences.push_back("Friendship... It hurts so much");
+    moonSentences.push_back("Are we? I'm invisible to them...");
+    moonSentences.push_back("What if everyone was talking about me this whole time?");
 
     Moon moon("The life of the moon is so lonely", font);
     moon.setOrigin(moon.getLocalBounds().width/2, moon.getLocalBounds().height/2);
@@ -136,7 +137,8 @@ sf::Vector2f groupPosition;
             //std::cout << "idle" << std::endl;
             if(moon.textBox.finished()){
                 //std::cout << "boobs" << std::endl;
-                moon.setSentence(moonSentences[moonSentenceIndex]);
+                if(moonSentenceIndex < moonSentences.size()) moon.setSentence(": )");
+                else moon.setSentence(moonSentences[moonSentenceIndex]);
                 ++moonSentenceIndex;
                 currentState = State::Speaking;
             }
@@ -158,7 +160,7 @@ sf::Vector2f groupPosition;
                 if( rand()%2 == 0) sign4 = 1;
 
                 int w_size = static_cast<int>(window.getSize().y);
-                groupPosition = moon.getPosition()+sf::Vector2f((w_size/5 + rand()%w_size) * sign1,
+                groupPosition = moon.getPosition() + sf::Vector2f((w_size/5 + rand()%w_size) * sign1,
                                                                 (w_size/5 + rand()%w_size) * sign2);
 
 
@@ -221,7 +223,7 @@ sf::Vector2f groupPosition;
 		//Set window view, draw and display
         window.setView(view);
 
-        sf::Color c = sf::Color(0,0,0,1);
+        sf::Color c = sf::Color(0,0,0,0.1);
         window.clear(c);
 
 
@@ -237,6 +239,11 @@ sf::Vector2f groupPosition;
         }
 
         for(Star &s : stars){
+            float dist = std::abs(distance(moon.getPosition(), s.getPosition()));
+            if(dist < 2*moon.getGlobalBounds().width){
+                float factor = dist/2.f*moon.getGlobalBounds().width;
+                s.setColor(sf::Color(255,255,255,int(255*factor)));
+            }else s.setColor(sf::Color(255,255,255,255));
             s.render(window);
             //window.draw(s);
         }
