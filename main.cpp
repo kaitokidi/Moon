@@ -173,8 +173,8 @@ sf::Vector2f groupPosition;
                                                                     (w_size/5 + rand()%w_size) * sign2);
 
 
-                    for(auto pair: group){
-                        stars.push_back(Star(font, pair.first));
+                    for(auto &pair: group){
+                        stars.emplace_back(Star(font, pair.first));
                         stars[stars.size()-1].setPosition(groupPosition+sf::Vector2f((20 + rand()%150) * sign3,
                                                                                      (20 + rand()%150) * sign4));
                         stars[stars.size()-1].setSentence(pair.second);
@@ -183,35 +183,35 @@ sf::Vector2f groupPosition;
                 }
                 else {
                     int size = 20;
-                    stars.push_back(Star(font, 2));
+                    stars.emplace_back(Star(font, 2));
                     stars[stars.size()-1].setPosition(sf::Vector2f(0.0,0.0));
                     stars[stars.size()-1].setSentence(": )");
 
-                    stars.push_back(Star(font, 3));
+                    stars.emplace_back(Star(font, 3));
                     stars[stars.size()-1].setPosition(sf::Vector2f(1*size,-1.42*size));
                     stars[stars.size()-1].setSentence("<3");
 
-                    stars.push_back(Star(font, 3));
+                    stars.emplace_back(Star(font, 3));
                     stars[stars.size()-1].setPosition(sf::Vector2f(-1*size,-1.42*size));
                     stars[stars.size()-1].setSentence("<3");
 
-                    stars.push_back(Star(font, 4));
+                    stars.emplace_back(Star(font, 4));
                     stars[stars.size()-1].setPosition(sf::Vector2f(2*size,-2.84*size));
                     stars[stars.size()-1].setSentence(": )");
 
-                    stars.push_back(Star(font, 4));
+                    stars.emplace_back(Star(font, 4));
                     stars[stars.size()-1].setPosition(sf::Vector2f(-2*size,-2.84*size));
                     stars[stars.size()-1].setSentence("<3");
 
-                    stars.push_back(Star(font, 5));
+                    stars.emplace_back(Star(font, 5));
                     stars[stars.size()-1].setPosition(sf::Vector2f(1.6*size,-3.9*size));
                     stars[stars.size()-1].setSentence(": )");
 
-                    stars.push_back(Star(font, 3));
+                    stars.emplace_back(Star(font, 3));
                     stars[stars.size()-1].setPosition(sf::Vector2f(-1.4*size,-3.9*size));
                     stars[stars.size()-1].setSentence("( :");
 
-                    stars.push_back(Star(font, 6));
+                    stars.emplace_back(Star(font, 6));
                     stars[stars.size()-1].setPosition(sf::Vector2f(0*size,-3.1*size));
                     stars[stars.size()-1].setSentence("<3");
                 }
@@ -224,6 +224,9 @@ sf::Vector2f groupPosition;
             for(Star &s : stars){
                //// std::cout << "star -> " << s.getPosition().x << ";" << s.getPosition().y << std::endl;
                 if(distance(moon.getPosition(), s.getPosition()) > window.getSize().y/2) goToNextState = false;
+            }
+            for(Star &s : stars){
+                s.update(deltatime);
             }
             if(goToNextState){
                 for(Star &s : stars){
@@ -257,6 +260,7 @@ sf::Vector2f groupPosition;
                 fadeOutValue += deltatime* 0.5;
                 for(Star &s : stars){
                     s.setColor(sf::Color(255,255,255, 255-255*fadeOutValue));
+                    s.sglow.setColor(sf::Color(255,255,255, 255-255*fadeOutValue));
                 }
             }
             else {
