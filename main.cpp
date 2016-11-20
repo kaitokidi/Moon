@@ -134,9 +134,6 @@ int main(){
 					if (event.key.code == sf::Keyboard::Escape) {
 						window.close();
 					}
-					if (event.key.code == sf::Keyboard::Q) {
-						window.close();
-					}
                 //Default
 				default:
 					//Do nothing
