@@ -1,5 +1,5 @@
-/home/kaito/Escriptori/GitProjects/findSpy/moon/obj/local/armeabi/objs/sfml-example/main.o: \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/main.cpp \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/obj/local/armeabi/objs/sfml-example/main.o: \
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/main.cpp \
  /home/kaito/android/ndk/sources/sfml/include/SFML/Graphics.hpp \
  /home/kaito/android/ndk/sources/sfml/include/SFML/Window.hpp \
  /home/kaito/android/ndk/sources/sfml/include/SFML/System.hpp \
@@ -178,9 +178,9 @@
  /home/kaito/android/ndk/sources/cxx-stl/llvm-libc++/libcxx/include/cmath \
  /home/kaito/android/ndk/sources/cxx-stl/llvm-libc++/../../android/support/include/math.h \
  /home/kaito/android/ndk/platforms/android-9/arch-arm/usr/include/math.h \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/moon.h \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/textBox.h \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/star.h
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/moon.h \
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/textBox.h \
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/star.h
 
 /home/kaito/android/ndk/sources/sfml/include/SFML/Graphics.hpp:
 
@@ -538,8 +538,8 @@
 
 /home/kaito/android/ndk/platforms/android-9/arch-arm/usr/include/math.h:
 
-/home/kaito/Escriptori/GitProjects/findSpy/moon/jni/moon.h:
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/moon.h:
 
-/home/kaito/Escriptori/GitProjects/findSpy/moon/jni/textBox.h:
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/textBox.h:
 
-/home/kaito/Escriptori/GitProjects/findSpy/moon/jni/star.h:
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/star.h:

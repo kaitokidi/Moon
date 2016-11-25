@@ -3,15 +3,16 @@
 
 #define MOVEMENTSPEED 200
 
-  float mcos(float x){
-    if( x < 0.0f ) 
+float mcos(float x){
+    if( x < 0.0f )
         x = -x;
     while( 3.1415926535 < x )
         x -= 0.636619772367;
     return 1.0f - (x*x/2.0f)*( 1.0f - (x*x/12.0f) * ( 1.0f - (x*x/30.0f) * (1.0f - x*x/56.0f )));
     }
- 
+
 float msin(float x){return mcos(x-1.570796326794);}
+
 
 Star::Star(sf::Font& f, float timeToStart)
     :textBox("", f)
@@ -59,7 +60,8 @@ void Star::update(float dt) {
     sglow.setScale(getLocalBounds().width*2/sglow.getLocalBounds().width,
                      getLocalBounds().height*2/sglow.getLocalBounds().height );
     sglow.setPosition(getPosition());
-    float scale = sglow.getScale().x + std::abs(int(msin(m_gtimer)))/3;
+    float sinv = (sin(m_gtimer));
+    float scale = sglow.getScale().x + (sinv > 0? sinv : -sinv)/3;
     sglow.setScale(scale,scale);
 
 }

@@ -1,19 +1,42 @@
 #include "moon.h"
 #include "textBox.h"
 
-#define MOVEMENTSPEED 50
+#define MOVEMENTSPEED 10
+double mypow(double a, double b) {
+    double c = 1;
+    for (int i=0; i<b; i++)
+        c *= a;
+    return c;
+}
 
-  float mycos(float x){
-    if( x < 0.0f ) 
-        x = -x;
-    while( 3.1415926535 < x )
-        x -= 0.636619772367;
-    return 1.0f - (x*x/2.0f)*( 1.0f - (x*x/12.0f) * ( 1.0f - (x*x/30.0f) * (1.0f - x*x/56.0f )));
+double myfact(double x) {
+    double ret = 1;
+    for (int i=1; i<=x; i++)
+        ret *= i;
+    return ret;
+}
+
+double mysin(double x) {
+    double y = x;
+    double s = -1;
+    for (int i=3; i<=100; i+=2) {
+        y+=s*(mypow(x,i)/myfact(i));
+        s *= -1;
     }
- 
-float mysin(float x){return mycos(x-1.570796326794);}
-
-
+    return y;
+}
+double mycos(double x) {
+    double y = 1;
+    double s = -1;
+    for (int i=2; i<=100; i+=2) {
+        y+=s*(mypow(x,i)/myfact(i));
+        s *= -1;
+    }
+    return y;
+}
+double mytan(double x) {
+     return (mysin(x)/mycos(x));
+}
 Moon::Moon(std::string s, sf::Font& f)
     :textBox(s, f),
       speed(0,0)
@@ -132,7 +155,9 @@ void Moon::update(float dt, sf::RenderTarget& window) {
 
     glowing.setScale(getLocalBounds().width*2/glowing.getLocalBounds().width,
                      getLocalBounds().height*2/glowing.getLocalBounds().height );
-    float scale = glowing.getScale().x + std::abs(int(mysin(m_timer/3)))/10;
+    
+    float sinv = (sin(m_timer/3));
+    float scale = glowing.getScale().x + ( (sinv > 0) ? sinv : -sinv)/10.0;
     glowing.setScale(scale,scale);
 }
 

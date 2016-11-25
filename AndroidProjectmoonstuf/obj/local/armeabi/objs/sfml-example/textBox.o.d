@@ -1,6 +1,6 @@
-/home/kaito/Escriptori/GitProjects/findSpy/moon/obj/local/armeabi/objs/sfml-example/textBox.o: \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/textBox.cpp \
- /home/kaito/Escriptori/GitProjects/findSpy/moon/jni/textBox.h \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/obj/local/armeabi/objs/sfml-example/textBox.o: \
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/textBox.cpp \
+ /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/textBox.h \
  /home/kaito/android/ndk/sources/sfml/include/SFML/Graphics.hpp \
  /home/kaito/android/ndk/sources/sfml/include/SFML/Window.hpp \
  /home/kaito/android/ndk/sources/sfml/include/SFML/System.hpp \
@@ -159,7 +159,7 @@
  /home/kaito/android/ndk/sources/cxx-stl/llvm-libc++/libcxx/include/iostream \
  /home/kaito/android/ndk/sources/cxx-stl/llvm-libc++/libcxx/include/istream
 
-/home/kaito/Escriptori/GitProjects/findSpy/moon/jni/textBox.h:
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/jni/textBox.h:
 
 /home/kaito/android/ndk/sources/sfml/include/SFML/Graphics.hpp:
 
