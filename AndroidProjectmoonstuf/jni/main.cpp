@@ -352,8 +352,15 @@ sf::Vector2f groupPosition;
             float angle = getAngle(moon.getPosition(), stars[0].getPosition());
             //std::cout << "the angle is "<< angle << std::endl;
             sf::Vector2f guiaPos;
+            guia.setFillColor(sf::Color(200,200,200,50));
             guiaPos.x = moon.getPosition().x + std::cos(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
             guiaPos.y = moon.getPosition().y + std::sin(angle*M_PI/180) * (moon.getRadius()*3 + guia.getRadius());
+            guia.setPosition(guiaPos);
+            window.draw(guia);
+
+            guia.setFillColor(sf::Color(0,0,0,255));
+            guiaPos.x = moon.getPosition().x + std::cos(angle*M_PI/180) * (moon.getRadius()*3 );//+ guia.getRadius());
+            guiaPos.y = moon.getPosition().y + std::sin(angle*M_PI/180) * (moon.getRadius()*3 );//+ guia.getRadius());
             guia.setPosition(guiaPos);
             window.draw(guia);
         }
