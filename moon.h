@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <iostream>
+#include <math.h>
 #include "textBox.h"
 
 class Moon : public sf::CircleShape {

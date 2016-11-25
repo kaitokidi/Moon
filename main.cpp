@@ -106,7 +106,13 @@ int main(){
 
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), L"The Moon", sf::Style::Resize|sf::Style::Close);
 
+    view.reset(sf::FloatRect(0,0,
+                             window.getSize().x, window.getSize().y));
+
     window.setFramerateLimit(30);
+
+
+    std::vector < sf::CircleShape > ministars;
 
     float fadeOutValue = 0;
 
@@ -277,20 +283,69 @@ sf::Vector2f groupPosition;
 
         moon.update(deltatime, window);
 		//Set view values
-        sf::Vector2f viewPosition;
+        sf::Vector2f viewPosition = view.getCenter();
+
+        view.reset(sf::FloatRect(viewPosition.x, viewPosition.y,
+                                 window.getSize().x, window.getSize().y));
+
+        sf::Vector2f step;
+        step.x = (viewPosition.x - moon.getPosition().x+10) *-0.1* deltatime;
+        step.y = (viewPosition.y - moon.getPosition().y+10) *-0.1* deltatime;
+
+        float maxDist = 20;
+        float dist = distance(viewPosition, moon.getPosition());
+        sf::Vector2f extra(0.f,0.f);
+        if( dist > maxDist){
+            extra.x = (viewPosition.x - moon.getPosition().x+10) *-1* deltatime;
+            extra.y = (viewPosition.y - moon.getPosition().y+10) *-1* deltatime;
+        }
+
+
+        view.setCenter(viewPosition + step + extra);
+        view.setViewport(sf::FloatRect(0,0,1.0f,1.0f));
+
+/*
         view.reset(sf::FloatRect(moon.getPosition().x, moon.getPosition().y,
                                  window.getSize().x, window.getSize().y));
 
         viewPosition.y = moon.getPosition().y+10;
         viewPosition.x = moon.getPosition().x+10;
-		view.setCenter(viewPosition);
-		view.setViewport(sf::FloatRect(0,0,1.0f,1.0f));
+        view.setCenter(viewPosition);
+        view.setViewport(sf::FloatRect(0,0,1.0f,1.0f));
+*/
 
 		//Set window view, draw and display
         window.setView(view);
 
         sf::Color c = sf::Color(0,0,0,0.1);
         window.clear(c);
+
+
+        for(auto it = ministars.begin(); it != ministars.end();){
+            if(std::abs(it->getPosition().x - moon.getPosition().x) > window.getSize().x
+                    || std::abs(it->getPosition().y - moon.getPosition().y) > window.getSize().y
+                    ) it = ministars.erase(it);
+            else ++it;
+        }
+
+        const int maxStars = 50;
+        if(ministars.size() < maxStars){
+            for(int i = ministars.size(); i < maxStars; ++i){
+                sf::Vector2f pos;
+                pos.x = rand()%window.getSize().x;
+                pos.x -= window.getSize().x/2;
+                pos.y = rand()%window.getSize().y;
+                pos.y -= window.getSize().y/2;
+                sf::CircleShape c(1,4);
+                c.setPosition(moon.getPosition() + pos);
+                c.setFillColor(sf::Color(250,250,250,100));
+                ministars.push_back(c);
+            }
+        }
+
+        for(int i = 0; i < maxStars; ++i){
+            window.draw(ministars[i]);
+        }
 
 
 
