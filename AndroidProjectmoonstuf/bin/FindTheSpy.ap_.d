@@ -1,0 +1,21 @@
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/FindTheSpy.ap_ \
+ : /home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/drawable-mdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/drawable-hdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/values/strings.xml \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/drawable-xxhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/drawable-xhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/res/drawable-ldpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/res/drawable-mdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/res/drawable-hdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/res/drawable-xxhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/res/drawable-xhdpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/res/drawable-ldpi/sfml_logo.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/font.otf \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/auxglow.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/sglow.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/glow.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/moon.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/music.ogg \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/assets/res/star.png \
+/home/kaito/Escriptori/GitProjects/Moon/Moon/AndroidProjectmoonstuf/bin/AndroidManifest.xml \
