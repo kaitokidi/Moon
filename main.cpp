@@ -17,7 +17,6 @@ float getAngle(sf::Vector2f &orig, sf::Vector2i &des) {
     return std::atan2(des.y - orig.y, des.x - orig.x)*180/(M_PI);
 }
 
-
 namespace State{
 enum state {
   Idle, Speaking, Searching, GroupChat, fadeOut
@@ -59,27 +58,27 @@ int main(){
     std::vector< std::vector <std::pair <float, std::string > > > groups =
     {
         {
-            std::pair <float, std::string >(0, "Hi friend!"),
+            std::pair <float, std::string >(0, "Hi, been a long time!"),
             std::pair <float, std::string >(5, "I've missed you so much!")
         }
         ,
         {
             std::pair <float, std::string >(0, "Glad you are here!"),
-            std::pair <float, std::string >(6, "I Really love you : )!")
+            std::pair <float, std::string >(6, "Oh, I love you! ^^ ")
         }
         ,
         {
         }
         ,
         {
-            std::pair <float, std::string >(0, "You are everything to me!"),
+            std::pair <float, std::string >(0, "Hey boys!"),
             std::pair <float, std::string >(6, "You are awesome!"),
-            std::pair <float, std::string >(10, "Guys are you getting sentimental?")
+            std::pair <float, std::string >(10, "So good to see you all!!!")
         }
         ,
         {
-            std::pair <float, std::string >(0, "Loneliness is hard to accept!"),
-            std::pair <float, std::string >(6, "Don't worry, we are good now!")
+            std::pair <float, std::string >(0, "Loneliness fades away with you"),
+            std::pair <float, std::string >(6, "We are all good together!")
         }
         ,
         {}
@@ -87,11 +86,10 @@ int main(){
         {}
     };
 
-
     moonSentences.push_back("I'm so alone in this universe... \n Is hard to live this way...");
     moonSentences.push_back("I wish someone missed me too...");
     moonSentences.push_back("Has to be so nice to be loved...");
-    moonSentences.push_back("Hope someone would care about me... \n I'm sure is a warm feeling...");
+    moonSentences.push_back("Wish someone would care about me... \n I'm sure is a warm feeling...");
     moonSentences.push_back("Friendship... It hurts so much not having it...");
     moonSentences.push_back("Are we? I'm invisible to them...");
     moonSentences.push_back("But wait...");
@@ -187,7 +185,6 @@ sf::Vector2f groupPosition;
                         stars[stars.size()-1].setPosition(groupPosition+sf::Vector2f((20 + rand()%150) * sign3,
                                                                                      (20 + rand()%150) * sign4));
                         stars[stars.size()-1].setSentence(pair.second);
-                        //std::cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << pair.second << std::endl;
                     }
                 }
                 else {
