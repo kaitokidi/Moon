@@ -95,6 +95,7 @@ int main(){
     moonSentences.push_back("But wait...");
     moonSentences.push_back("What if everyone was talking about me this whole time?");
     moonSentences.push_back("Game made with love  \n by Genís Bayona at Oxfordhacks 2016");
+    moonSentences.push_back("Music: Sad Day from \n Royalty Free Music Bensound. "
 
     Moon moon("The life of the moon is so lonely", font);
     moon.setOrigin(moon.getLocalBounds().width/2, moon.getLocalBounds().height/2);
