@@ -1,7 +1,8 @@
 # Moon
 The moon is all alone 
 
-for the prototipe
- "Music: "Sad Day" from "Royalty Free Music from Bensound" 
+Programing, design and art made by Genís Bayona.
+"Music: "Sad Day Royalty Free Music from Bensound" 
 
- using SFML 2.3
+Developed using SFML 2.3
+C++
